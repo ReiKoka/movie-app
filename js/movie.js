@@ -66,21 +66,9 @@ export const initMovie = (movie) => {
   let player;
 
   function onYouTubeIframeAPIReady() {
-    const iframe = document.querySelector(".frame-player"); // Your iframe element
-
+    const iframe = document.querySelector(".frame-player");
     if (iframe) {
-      player = new YT.Player(iframe, {
-        events: {
-          onStateChange: onPlayerStateChange,
-        },
-      });
-    }
-  }
-
-  // Handle state changes, e.g., when the video is playing
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING) {
-      console.log("Video is playing");
+      player = new YT.Player(iframe);
     }
   }
 
