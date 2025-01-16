@@ -205,8 +205,91 @@ img {
   flex-direction: column;
 }
 
+.modal-content:has(.modal-alarm).modal-content {
+  align-items: center;
+  padding: 3rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-content:has(.modal-alarm) .modal-alarm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-content:has(.modal-alarm) .modal-alarm .alarm-logo {
+  width: 10rem;
+  height: 10rem;
+  color: hsl(var(--primary));
+  margin: 0 auto;
+}
 
 .frame-player {
   width: 100%;
   height: 100%;
+}
+
+.movie-details-container .movie-main .movie-info .main-details {
+  border-top: 1px solid hsl(var(--muted));
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.movie-details-container .movie-main .movie-info .main-details h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.movie-details-container .movie-main .movie-info .main-details .synopsis, .movie-details-container .movie-main .movie-info .main-details .background {
+  font-weight: 300;
+  font-size: 0.6rem;
+  text-align: justify;
+}
+
+.movie-details-container
+  .movie-main
+  .movie-info
+  .main-details
+  .release-other-info {
+  border-top: 1px solid hsl(var(--muted));
+  border-bottom: 1px solid hsl(var(--muted));
+  margin: 1rem 0;
+  padding: 1rem 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.movie-details-container
+  .movie-main
+  .movie-info
+  .main-details
+  .release-other-info
+  > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movie-details-container
+  .movie-main
+  .movie-info
+  .main-details
+  .release-other-info
+  p {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.movie-details-container
+  .movie-main
+  .movie-info
+  .main-details
+  .release-other-info
+  p
+  span {
+  font-size: 0.6rem;
+  font-weight: 300;
 }
