@@ -36,13 +36,19 @@
 }
 
 body {
-  width: 100%;
+  max-width: 1800px;
   background-color: hsl(var(--background));
   font-family: hsl(var(--font-primary));
-  display: grid;
-  grid-template-rows: 80px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   padding: 2rem;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+img {
+  max-width: 100%;
 }
 
 img {
@@ -50,7 +56,7 @@ img {
 }
 
 .nav {
-  width: 100%;
+  max-width: 1800px;
   display: flex;
   align-items: center;
   padding: 1.2em 2em;
@@ -104,7 +110,7 @@ img {
 }
 
 .movie-details-container {
-  padding: 0 3.5em;
+  padding: 0 2em;
   display: flex;
 }
 
@@ -141,6 +147,7 @@ img {
 
 .movie-details-container .movie-main .movie-info .small-details {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1.5rem;
 }
@@ -321,4 +328,52 @@ img {
   span {
   font-size: 0.6rem;
   font-weight: 300;
+}
+
+@media only screen and (max-width: 1600px) {
+  .movie-details-container .movie-main {
+    max-height: 70dvh;
+  }
+  
+  .movie-details-container .movie-main .movie-poster {
+    height: 100%;
+    max-height: 70dvh;
+  }
+
+  .movie-details-container .movie-main .movie-info {
+    padding: 3rem 2rem;
+    overflow-y: auto;
+    max-height: fit-content;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .movie-details-container
+    .movie-main
+    .movie-info
+    .main-details
+    .release-other-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .movie-details-container .movie-main {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .movie-details-container .movie-main .movie-poster {
+    width: fit-content;
+    height: 100%;
+    max-height: 70dvh;
+    margin: 0 auto;
+  }
+
+  .movie-details-container .movie-main .movie-info {
+    max-height: none;
+    height: auto;
+    overflow: visible;
+  }
 }

@@ -46,16 +46,6 @@ body {
   margin: 0 auto;
 }
 
-html::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-html {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 img {
   max-width: 100%;
 }
@@ -162,7 +152,6 @@ img {
   transform: translateY(-50%);
   transition: all 0.3s cubic-bezier(0.5, 1, 0.89, 1);
 }
-
 
 .slider-wrapper #prev-slide {
   left: -25px;

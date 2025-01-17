@@ -3,7 +3,6 @@ import { formatNumbers } from "./utils/helpers.js";
 export const initSlider = (movies) => {
   const movieList = document.querySelector(".slider-movies");
   const sliderWrapper = document.querySelector(".slider-wrapper");
-  const topRated = document.querySelector(".top-rated");
 
   movies?.forEach((movie) => {
     const movieCard = document.createElement("div");
