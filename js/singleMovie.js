@@ -1,4 +1,4 @@
-import { formatNumbers } from "./helpers.js";
+import { formatNumbers } from "./utils/helpers.js";
 
 export const initMovie = (movie) => {
   const singleMovieContainer = document.querySelector(

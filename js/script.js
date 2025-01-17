@@ -1,6 +1,6 @@
 "use strict";
-import { getAllMovies, getMoviesData } from "./getAllMovies.js";
-import { initAllMovies } from "./movies.js";
+import { getAllMovies, getMoviesData } from "./services/getAllMovies.js";
+import { initAllMovies } from "./allMovies.js";
 import { initSlider } from "./slider.js";
 
 const initializeMovies = async () => {

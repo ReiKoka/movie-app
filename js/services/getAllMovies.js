@@ -1,6 +1,6 @@
 "use strict";
 
-import { URL } from "./constants.js";
+import { URL } from "../utils/constants.js";
 
 let allMovies = null;
 

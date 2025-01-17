@@ -1,7 +1,9 @@
-import { formatNumbers } from "./helpers.js";
+import { formatNumbers } from "./utils/helpers.js";
 
 export const initSlider = (movies) => {
   const movieList = document.querySelector(".slider-movies");
+  const sliderWrapper = document.querySelector(".slider-wrapper");
+
   movies?.forEach((movie) => {
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie");
@@ -45,13 +47,13 @@ export const initSlider = (movies) => {
     movieList.appendChild(movieCard);
   });
 
-  const maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
+  const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
   const slideButtons = document.querySelectorAll(".slide-button");
 
   slideButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const direction = button.id === "prev-slide" ? -1 : 1;
-      const scrollAmount = movieList.clientWidth * direction;
+      const scrollAmount = sliderWrapper.clientWidth * direction;
       movieList.scrollBy({ left: scrollAmount, behavior: "smooth" });
     });
   });
