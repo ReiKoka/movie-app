@@ -6,15 +6,19 @@ import { initSlider } from "./slider.js";
 const initializeMovies = async () => {
   await getAllMovies();
   const allMovies = getMoviesData();
+  
+  window.addEventListener("DOMContentLoaded", initAllMovies(allMovies));
 
-  const topRatedMovies = allMovies
-    ?.sort((a, b) => b.score - a.score)
+  const mostPopularMovies = allMovies
+    ?.sort((a, b) => b.popularity - a.popularity)
     .slice(0, 15);
 
-  if (!topRatedMovies) return;
+  console.log(mostPopularMovies)
+  console.log(allMovies)
 
-  window.addEventListener("DOMContentLoaded", initSlider(topRatedMovies));
-  window.addEventListener("DOMContentLoaded", initAllMovies(allMovies));
+  if (!mostPopularMovies) return;
+
+  window.addEventListener("DOMContentLoaded", initSlider(mostPopularMovies));
 };
 
 initializeMovies();

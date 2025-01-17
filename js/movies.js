@@ -15,7 +15,6 @@ export const initAllMovies = (movies) => {
           <p class="movie-genre">${movie?.genres[0]?.name}</p>
           <p class="movie-episodes">${movie?.episodes} episodes</p>
           <p class="movie-rank">Rank ${movie?.rank}</p>
-
         </div>
 
         <div class="movie-data">

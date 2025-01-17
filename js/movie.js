@@ -93,8 +93,11 @@ export const initMovie = (movie) => {
             </p>
           </div>
         </div>
-        <h3>Background</h3>
-        <p class="background">${movie?.background}</p>
+        ${
+          movie?.background &&
+          `<h3>Background</h3>
+        <p class="background">${movie?.background}</p>`
+        } 
       </div>
     </div>
   `;
@@ -109,8 +112,20 @@ export const initMovie = (movie) => {
   function onYouTubeIframeAPIReady() {
     const iframe = document.querySelector(".frame-player");
     if (iframe) {
-      player = new YT.Player(iframe);
+      player = new YT.Player(iframe, {
+        playerVars: {
+          autoplay: 0,
+        },
+        events: {
+          onReady: onPlayerReady,
+        },
+      });
     }
+  }
+
+  function onPlayerReady(event) {
+    // Ensure video does not play when the player is ready
+    event.target.stopVideo();
   }
 
   trailerButton.addEventListener("click", () => {
@@ -123,4 +138,6 @@ export const initMovie = (movie) => {
       player.stopVideo();
     }
   });
+
+  onYouTubeIframeAPIReady();
 };
