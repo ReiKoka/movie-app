@@ -3,6 +3,7 @@ import { formatNumbers } from "./utils/helpers.js";
 export const initSlider = (movies) => {
   const movieList = document.querySelector(".slider-movies");
   const sliderWrapper = document.querySelector(".slider-wrapper");
+  const topRated = document.querySelector(".top-rated");
 
   movies?.forEach((movie) => {
     const movieCard = document.createElement("div");
@@ -49,6 +50,16 @@ export const initSlider = (movies) => {
 
   const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
   const slideButtons = document.querySelectorAll(".slide-button");
+
+  movieList.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+
+      const direction = e.key === "ArrowLeft" ? -1 : 1;
+      const scrollAmount = sliderWrapper.clientWidth * direction;
+      movieList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  });
 
   slideButtons.forEach((button) => {
     button.addEventListener("click", () => {
