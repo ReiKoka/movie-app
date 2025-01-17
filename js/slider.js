@@ -47,6 +47,16 @@ export const initSlider = (movies) => {
     movieList.appendChild(movieCard);
   });
 
+  const buttons = document.querySelectorAll(".secondary-button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const id = e.currentTarget.dataset.id;
+      if (id) {
+        window.location.href = `../movieDetails.html?id=${id}`;
+      }
+    });
+  });
+
   const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
   const slideButtons = document.querySelectorAll(".slide-button");
 

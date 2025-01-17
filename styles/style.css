@@ -483,6 +483,10 @@ img {
   filter: saturate(0.8);
 }
 
+.movie-content .movie-buttons a:active, .movie-content .movie-buttons button:active {
+  transform: scale(0.9);
+} 
+
 .all-movies-container .movie .movie-info a:active,
 .all-movies-container .movie .movie-info button:active {
   transform: scale(0.9);
