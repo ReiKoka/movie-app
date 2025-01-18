@@ -150,15 +150,16 @@ img {
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
   z-index: 10;
   cursor: pointer;
-  transform: translateY(-50%);
-  transition: all 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.3s cubic-bezier(0.5, 1, 0.89, 1),
+    opacity 0.3s ease-out, visibility 0.3s ease;
 }
 
 .slider-wrapper #prev-slide {
   left: -25px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(0deg);
 }
 
 .slider-wrapper #prev-slide.show {
@@ -167,20 +168,11 @@ img {
   transform: translateY(-50%) rotate(360deg);
 }
 
-.slider-wrapper #prev-slide:hover {
-  transform: translateY(-50%) scale(01.2);
-}
-
-.slider-wrapper #prev-slide:active {
-  transform: translateY(-50%) scale(0.8);
-}
-
 .slider-wrapper #next-slide {
   right: -25px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-50%);
-  transition: all 0.3s ease-out;
+  transform: translateY(-50%) rotate(0deg);
 }
 
 .slider-wrapper #next-slide.show {
@@ -189,12 +181,14 @@ img {
   transform: translateY(-50%) rotate(360deg);
 }
 
-.slider-wrapper #next-slide:hover {
-  transform: translateY(-50%) scale(01.2);
+.slider-wrapper #prev-slide.show:hover,
+.slider-wrapper #next-slide.show:hover {
+  transform: translateY(-50%) rotate(360deg) scale(1.2);
 }
 
-.slider-wrapper #next-slide:active {
-  transform: translateY(-50%) scale(0.8);
+.slider-wrapper #prev-slide.show:active,
+.slider-wrapper #next-slide.show:active {
+  transform: translateY(-50%) rotate(360deg) scale(0.8);
 }
 
 .slider-wrapper .slider-movies {
@@ -598,6 +592,19 @@ img {
 }
 
 @media only screen and (max-width: 520px) {
+  body {
+    padding: 1rem;
+  }
+
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .top-rated,
+  .all-movies {
+    padding: 0 1rem;
+  }
+
   .all-movies-container .movie .movie-info .movie-buttons {
     flex-direction: column;
   }
@@ -605,7 +612,7 @@ img {
   .all-movies-container .movie .movie-info .movie-buttons button,
   .movie-content .movie-buttons a,
   .movie-content .movie-buttons button {
-    font-size: 0.2rem;
+    font-size: 0.8rem;
     width: 100%;
   }
 
@@ -618,13 +625,15 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    padding-top: 1rem;
   }
 
   .all-movies .all-movies-container .movie .movie-poster {
     position: relative;
     align-self: center;
     border-radius: var(--radius);
-    min-width: 100%;
+    min-width: 50%;
   }
 
   .all-movies .all-movies-container .movie .movie-info {
@@ -632,5 +641,6 @@ img {
     width: 100%;
     left: 0;
     top: 0;
+    gap: 0.6rem;
   }
 }
