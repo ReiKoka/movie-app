@@ -57,7 +57,7 @@ export const initSlider = (movies) => {
     });
   });
 
-  const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+  const maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
   const slideButtons = document.querySelectorAll(".slide-button");
 
   movieList.addEventListener("keydown", (e) => {
