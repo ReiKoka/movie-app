@@ -39,9 +39,6 @@ body {
   max-width: 1800px;
   background-color: hsl(var(--background));
   font-family: hsl(var(--font-primary));
-  display: grid;
-  grid-template-rows: 80px 1fr;
-  gap: 2rem;
   padding: 2rem;
   margin: 0 auto;
 }
@@ -483,9 +480,10 @@ img {
   filter: saturate(0.8);
 }
 
-.movie-content .movie-buttons a:active, .movie-content .movie-buttons button:active {
+.movie-content .movie-buttons a:active,
+.movie-content .movie-buttons button:active {
   transform: scale(0.9);
-} 
+}
 
 .all-movies-container .movie .movie-info a:active,
 .all-movies-container .movie .movie-info button:active {
