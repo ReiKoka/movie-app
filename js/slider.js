@@ -57,13 +57,16 @@ export const initSlider = (movies) => {
     });
   });
 
-  const maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
+  let maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
   const slideButtons = document.querySelectorAll(".slide-button");
+
+  const updateMaxScrollLeft = () => {
+    maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
+  };
 
   movieList.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       e.preventDefault();
-
       const direction = e.key === "ArrowLeft" ? -1 : 1;
       const scrollAmount = sliderWrapper.clientWidth * direction;
       movieList.scrollBy({ left: scrollAmount, behavior: "smooth" });
@@ -79,6 +82,8 @@ export const initSlider = (movies) => {
   });
 
   const handleSlideButtons = () => {
+    new ResizeObserver(updateMaxScrollLeft).observe(movieList);
+    console.log(maxScrollLeft);
     if (movieList.scrollLeft <= 0) {
       slideButtons[0].classList.remove("show");
     } else {
