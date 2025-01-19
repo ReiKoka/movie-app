@@ -1,4 +1,6 @@
-export const initAllMovies = (movies) => {
+import { getMovieIdAndPassToUrl } from "./utils/helpers.js";
+
+export const renderAllMovies = (movies) => {
   const movieList = document.querySelector(".all-movies-container");
   movies?.forEach((movie) => {
     const movieCard = document.createElement("div");
@@ -28,8 +30,6 @@ export const initAllMovies = (movies) => {
             <p class="movie-rating">Content Rating: <span>${
               movie?.rating
             }</span></p>
-            
-
         </div>
 
         <div class="movie-buttons">
@@ -41,6 +41,7 @@ export const initAllMovies = (movies) => {
             </svg>
             <span>More Info</span>
           </button>
+          
           <a href="${
             movie?.trailer?.url
           }" class="movie-trailer" target="_blank">
@@ -53,14 +54,5 @@ export const initAllMovies = (movies) => {
     `;
     movieList.appendChild(movieCard);
   });
-
-  const buttons = document.querySelectorAll(".secondary-button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      const id = e.currentTarget.dataset.id;
-      if (id) {
-        window.location.href = `../movieDetails.html?id=${id}`;
-      }
-    });
-  });
+  getMovieIdAndPassToUrl();
 };

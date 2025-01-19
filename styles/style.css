@@ -51,6 +51,28 @@ img {
   max-width: 100%;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-box {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav {
   max-width: 1800px;
   display: flex;
@@ -229,8 +251,6 @@ img {
   z-index: 3;
 }
 
-/* .slider-movies .movie .movie-score  */
-
 .slider-movies .movie .movie-content {
   background-color: hsl(var(--background));
   border-top-right-radius: var(--radius);
@@ -377,7 +397,7 @@ img {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
 }
 
 .movie-numbers {
@@ -390,8 +410,8 @@ img {
 .movie-numbers .movie-genre,
 .movie-numbers .movie-episodes,
 .movie-numbers .movie-rank {
-  font-size: 0.4rem;
-  font-weight: 400;
+  font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 1px;
   padding: 0.25rem 0.5rem;
   width: fit-content;
@@ -514,6 +534,19 @@ img {
 }
 
 @media only screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .top-rated,
+  .all-movies {
+    padding: 0 1rem;
+  }
+
   .all-movies .all-movies-container {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -592,18 +625,6 @@ img {
 }
 
 @media only screen and (max-width: 520px) {
-  body {
-    padding: 1rem;
-  }
-
-  .nav {
-    padding: 0.6rem 1rem;
-  }
-
-  .top-rated,
-  .all-movies {
-    padding: 0 1rem;
-  }
 
   .all-movies-container .movie .movie-info .movie-buttons {
     flex-direction: column;
@@ -625,7 +646,8 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding-top: 1rem;
   }
 

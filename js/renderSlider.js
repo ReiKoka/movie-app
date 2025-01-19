@@ -1,8 +1,8 @@
-import { formatNumbers } from "./utils/helpers.js";
+import { sliderButtonsHandler } from "./sliderButtonsHandler.js";
+import { formatNumbers, getMovieIdAndPassToUrl } from "./utils/helpers.js";
 
-export const initSlider = (movies) => {
+export const renderSlider = (movies) => {
   const movieList = document.querySelector(".slider-movies");
-  const sliderWrapper = document.querySelector(".slider-wrapper");
 
   movies?.forEach((movie) => {
     const movieCard = document.createElement("div");
@@ -45,59 +45,7 @@ export const initSlider = (movies) => {
     </div>
     `;
     movieList.appendChild(movieCard);
-  });
-
-  const buttons = document.querySelectorAll(".secondary-button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      const id = e.currentTarget.dataset.id;
-      if (id) {
-        window.location.href = `../movieDetails.html?id=${id}`;
-      }
-    });
-  });
-
-  let maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
-  const slideButtons = document.querySelectorAll(".slide-button");
-
-  const updateMaxScrollLeft = () => {
-    maxScrollLeft = movieList.scrollWidth - movieList.clientWidth;
-  };
-
-  movieList.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-      e.preventDefault();
-      const direction = e.key === "ArrowLeft" ? -1 : 1;
-      const scrollAmount = sliderWrapper.clientWidth * direction;
-      movieList.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  });
-
-  slideButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const direction = button.id === "prev-slide" ? -1 : 1;
-      const scrollAmount = sliderWrapper.clientWidth * direction;
-      movieList.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    });
-  });
-
-  const handleSlideButtons = () => {
-    new ResizeObserver(updateMaxScrollLeft).observe(movieList);
-    console.log(maxScrollLeft);
-    if (movieList.scrollLeft <= 0) {
-      slideButtons[0].classList.remove("show");
-    } else {
-      slideButtons[0].classList.add("show");
-    }
-
-    if (movieList.scrollLeft >= maxScrollLeft) {
-      slideButtons[1].classList.remove("show");
-    } else {
-      slideButtons[1].classList.add("show");
-    }
-  };
-
-  movieList.addEventListener("scroll", () => {
-    handleSlideButtons();
+    getMovieIdAndPassToUrl();
+    sliderButtonsHandler(movieList);
   });
 };

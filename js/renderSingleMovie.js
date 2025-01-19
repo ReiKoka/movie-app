@@ -1,12 +1,15 @@
+import { renderModal } from "./renderModal.js";
 import { formatNumbers } from "./utils/helpers.js";
+import { onYouTubeIframeAPIReady, stopPlayerVideo } from "./youtubePlayer.js";
 
-export const initMovie = (movie) => {
+export const renderSingleMovie = (movie) => {
   const singleMovieContainer = document.querySelector(
     ".movie-details-container"
   );
 
   const movieMain = document.createElement("div");
   movieMain.classList.add("movie-main");
+
   movieMain.innerHTML = `
     <img src="${movie?.images?.webp.large_image_url}" alt="${
     movie?.title
@@ -30,35 +33,12 @@ export const initMovie = (movie) => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
           <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z" />
           </svg>
-
           <span>Watch Trailer</span>
         </button>
-        <div class="modal" id="modal">
-          <div class="modal-box">
-            <div class="modal-content">
-              ${
-                movie?.trailer?.embed_url
-                  ? `<iframe class="frame-player"
-                    src="${movie?.trailer?.embed_url}"
-                    frameborder="0"
-                  ></iframe>`
-                  : `
-                  <h2 class="modal-alarm">
-                  <p class="alarm-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                    </svg>
-                  </p>
-                  <p class="alarm-message">
-                    Unfortunately this anime does not have a trailer available
-                    on YouTube. We apologize for the inconvenience!
-                  </p>
-                  </h2>`
-              }
-            </div>
-          </div>
-        </div>
+
+        ${renderModal(movie?.trailer?.embed_url)}
       </div>
+
       <div class="main-details">
         <h3>Overview</h3>
         <p class="synopsis">${movie?.synopsis}</p>
@@ -96,7 +76,7 @@ export const initMovie = (movie) => {
         ${
           movie?.background &&
           `<h3>Background</h3>
-        <p class="background">${movie?.background}</p>`
+          <p class="background">${movie?.background}</p>`
         } 
       </div>
     </div>
@@ -107,27 +87,6 @@ export const initMovie = (movie) => {
   const modal = document.querySelector("#modal");
   const modalBox = document.querySelector(".modal-box");
 
-  let player;
-
-  function onYouTubeIframeAPIReady() {
-    const iframe = document.querySelector(".frame-player");
-    if (iframe) {
-      player = new YT.Player(iframe, {
-        playerVars: {
-          autoplay: 0,
-        },
-        events: {
-          onReady: onPlayerReady,
-        },
-      });
-    }
-  }
-
-  function onPlayerReady(event) {
-    // Ensure video does not play when the player is ready
-    event.target.stopVideo();
-  }
-
   trailerButton.addEventListener("click", () => {
     modal.style.display = "block";
   });
@@ -135,7 +94,7 @@ export const initMovie = (movie) => {
   window.addEventListener("click", (e) => {
     if (e.target === modalBox) {
       modal.style.display = "none";
-      player.stopVideo();
+      stopPlayerVideo();
     }
   });
 

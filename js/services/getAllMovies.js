@@ -22,4 +22,4 @@ export const getAllMovies = async () => {
   }
 };
 
-export const getMoviesData = () => allMovies;
+export const getAllMoviesData = () => allMovies;

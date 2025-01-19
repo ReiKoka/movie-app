@@ -1,12 +1,11 @@
 import { getMovieData, goToMovieById } from "./services/getMovieById.js";
-import { initMovie } from "./singleMovie.js";
+import { renderSingleMovie } from "./renderSingleMovie.js";
 
 const initSingleMovie = async () => {
   const id = Number(window.location.href.split("?id=")[1]);
   await goToMovieById(id);
-
   const movie = getMovieData();
-  window.addEventListener("DOMContentLoaded", initMovie(movie));
+  window.addEventListener("DOMContentLoaded", renderSingleMovie(movie));
 };
 
 initSingleMovie();

@@ -1,24 +1,21 @@
 "use strict";
-import { getAllMovies, getMoviesData } from "./services/getAllMovies.js";
-import { initAllMovies } from "./allMovies.js";
-import { initSlider } from "./slider.js";
+import { getAllMovies, getAllMoviesData } from "./services/getAllMovies.js";
+import { renderAllMovies } from "./renderAllMovies.js";
+import { renderSlider } from "./renderSlider.js";
 
-const initializeMovies = async () => {
+const init = async () => {
   await getAllMovies();
-  const allMovies = getMoviesData();
-  
-  window.addEventListener("DOMContentLoaded", initAllMovies(allMovies));
+  const allMovies = getAllMoviesData();
+
+  window.addEventListener("DOMContentLoaded", renderAllMovies(allMovies));
 
   const mostPopularMovies = allMovies
     ?.sort((a, b) => b.popularity - a.popularity)
     .slice(0, 15);
 
-  console.log(mostPopularMovies)
-  console.log(allMovies)
-
   if (!mostPopularMovies) return;
 
-  window.addEventListener("DOMContentLoaded", initSlider(mostPopularMovies));
+  window.addEventListener("DOMContentLoaded", renderSlider(mostPopularMovies));
 };
 
-initializeMovies();
+init();

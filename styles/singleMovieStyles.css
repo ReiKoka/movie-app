@@ -35,6 +35,10 @@
   --font-secondary: "Roboto Mono", sans-serif;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   max-width: 1800px;
   background-color: hsl(var(--background));
@@ -117,20 +121,19 @@ img {
 .movie-details-container .movie-main {
   width: 100%;
   display: flex;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: var(--radius);
 }
 
 .movie-details-container .movie-main .movie-poster {
   flex: 1;
   border-top-left-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 .movie-details-container .movie-main .movie-info {
   flex: 2;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   padding: 6rem 4rem;
@@ -149,7 +152,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .movie-details-container .movie-main .movie-info .small-details .type {
@@ -230,8 +233,10 @@ img {
 
 .modal-content {
   background-color: hsl(var(--background));
-  width: 800px;
-  height: 500px;
+  width: 50%;
+  min-width: 300px;
+  height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -334,7 +339,7 @@ img {
   .movie-details-container .movie-main {
     max-height: 70dvh;
   }
-  
+
   .movie-details-container .movie-main .movie-poster {
     height: 100%;
     max-height: 70dvh;
@@ -359,21 +364,44 @@ img {
 }
 
 @media only screen and (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+
+  .movie-details-container {
+    padding: 0 1rem;
+  }
+
   .movie-details-container .movie-main {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    padding: 1rem 0;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    max-height: none;
   }
 
   .movie-details-container .movie-main .movie-poster {
-    width: fit-content;
-    height: 100%;
-    max-height: 70dvh;
     margin: 0 auto;
+    border-radius: var(--radius);
   }
 
   .movie-details-container .movie-main .movie-info {
     max-height: none;
     height: auto;
     overflow: visible;
+    padding: 1.5rem 1rem;
+  }
+
+  .movie-details-container .movie-main .movie-info .small-details {
+    gap: 0.75rem;
   }
 }
