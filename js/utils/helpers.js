@@ -17,3 +17,30 @@ export const getMovieIdAndPassToUrl = () => {
     });
   });
 };
+
+export const playTrailer = (watchTrailerButtons) => {
+  const modal = document.querySelector("#modal");
+  let modalBox;
+
+  watchTrailerButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const trailerUrl = e.currentTarget.dataset.trailer;
+      const modalMarkup = renderModal(trailerUrl);
+      console.log(modalMarkup);
+      const modalContainer = document.querySelector(".modal");
+      modalContainer.innerHTML = modalMarkup;
+
+      modalBox = document.querySelector(".modal-box");
+
+      modal.style.display = "block";
+      onYouTubeIframeAPIReady();
+    });
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modalBox) {
+      modal.style.display = "none";
+      stopPlayerVideo();
+    }
+  });
+}
