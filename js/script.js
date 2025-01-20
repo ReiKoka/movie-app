@@ -2,8 +2,10 @@
 import { getAllMovies, getAllMoviesData } from "./services/getAllMovies.js";
 import { renderAllMovies } from "./renderAllMovies.js";
 import { renderSlider } from "./renderSlider.js";
+import { setTheme } from "./setTheme.js";
 
 const init = async () => {
+  setTheme();
   await getAllMovies();
   const allMovies = getAllMoviesData();
 
