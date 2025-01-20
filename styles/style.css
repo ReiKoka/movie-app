@@ -1,5 +1,23 @@
 @import url("shared.css");
 
+.search {
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  height: 40px;
+  padding: 0 1rem;
+  line-height: 40px;
+  border: 1px solid hsl(var(--muted));
+  border-radius: 50px;
+  margin-left: auto;
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
+
+.search:focus {
+  outline: 2px solid hsl(var(--primary));
+}
+
+
 .top-rated,
 .all-movies {
   padding: 0 2em;

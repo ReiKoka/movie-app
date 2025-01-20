@@ -1,3 +1,5 @@
+"use strict";
+
 import { renderModal } from "../renderModal.js";
 import { onYouTubeIframeAPIReady, stopPlayerVideo } from "../youtubePlayer.js";
 
@@ -44,11 +46,15 @@ export const playTrailer = (watchTrailerButtons) => {
   });
 
   document.addEventListener("keydown", (e) => {
-    console.log(e)
     if (e.key === "Escape") {
-      console.log(e.key);
       modal.style.display = "none";
       stopPlayerVideo();
     }
   });
+};
+
+export const searchByTitle = (movies, searchTerm) => {
+  return movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 };

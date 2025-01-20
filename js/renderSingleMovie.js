@@ -1,3 +1,5 @@
+"use strict";
+
 import { renderModal } from "./renderModal.js";
 import { formatNumbers } from "./utils/helpers.js";
 import { onYouTubeIframeAPIReady, stopPlayerVideo } from "./youtubePlayer.js";

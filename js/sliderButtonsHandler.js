@@ -1,3 +1,5 @@
+"use strict";
+
 export function sliderButtonsHandler(movieList) {
   const sliderWrapper = document.querySelector(".slider-wrapper");
   const slideButtons = document.querySelectorAll(".slide-button");
@@ -44,4 +46,3 @@ export function sliderButtonsHandler(movieList) {
     handleSlideButtons();
   });
 }
-

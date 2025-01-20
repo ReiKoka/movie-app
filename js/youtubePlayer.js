@@ -1,3 +1,5 @@
+"use strict";
+
 export let player;
 
 export function onYouTubeIframeAPIReady() {

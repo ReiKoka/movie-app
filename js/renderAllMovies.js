@@ -1,6 +1,6 @@
-import { renderModal } from "./renderModal.js";
+"use strict";
+
 import { getMovieIdAndPassToUrl, playTrailer } from "./utils/helpers.js";
-import { onYouTubeIframeAPIReady, stopPlayerVideo } from "./youtubePlayer.js";
 
 export const renderAllMovies = (movies) => {
   const movieList = document.querySelector(".all-movies-container");
@@ -60,10 +60,8 @@ export const renderAllMovies = (movies) => {
     `;
     movieList.appendChild(movieCard);
   });
-
+  
   const watchTrailerButtons = document.querySelectorAll(".movie-trailer");
-
   playTrailer(watchTrailerButtons);
-
   getMovieIdAndPassToUrl();
 };

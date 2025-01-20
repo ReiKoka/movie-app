@@ -1,11 +1,12 @@
+"use strict";
+
 export const renderModal = (trailerUrl) => {
-  
   const modal = `
     
       <div class="modal-box">
         <div class="modal-content">
           ${
-            trailerUrl 
+            trailerUrl
               ? `<iframe class="frame-player"
                 src="${trailerUrl}"
                 frameborder="0"
