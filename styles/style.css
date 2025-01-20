@@ -274,7 +274,6 @@ img {
   border-radius: var(--radius);
   transition: all 0.3s;
   cursor: pointer;
-  position: relative;
   z-index: 2;
   display: flex;
   position: relative;
@@ -295,9 +294,9 @@ img {
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   max-width: 500px;
-  transform: scaleX(0);
+  transform: translateX(-100%);
   transform-origin: left;
-  transition: all 0.5s cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 1s cubic-bezier(0.5, 1, 0.89, 1);
 }
 
 .slider-movies .movie .movie-content > div {
@@ -335,7 +334,7 @@ img {
 }
 
 .slider-movies .movie:hover .movie-content {
-  transform: scaleX(1);
+  transform: translateX(0);
 }
 
 .slider-movies .movie:hover .movie-content > div {

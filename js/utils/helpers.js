@@ -1,7 +1,6 @@
 import { renderModal } from "../renderModal.js";
 import { onYouTubeIframeAPIReady, stopPlayerVideo } from "../youtubePlayer.js";
 
-
 export const formatNumbers = (number) => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
@@ -26,7 +25,7 @@ export const playTrailer = (watchTrailerButtons) => {
     button.addEventListener("click", (e) => {
       const trailerUrl = e.currentTarget.dataset.trailer;
       const modalMarkup = renderModal(trailerUrl);
-      console.log(modalMarkup);
+
       const modalContainer = document.querySelector(".modal");
       modalContainer.innerHTML = modalMarkup;
 
@@ -43,4 +42,13 @@ export const playTrailer = (watchTrailerButtons) => {
       stopPlayerVideo();
     }
   });
-}
+
+  document.addEventListener("keydown", (e) => {
+    console.log(e)
+    if (e.key === "Escape") {
+      console.log(e.key);
+      modal.style.display = "none";
+      stopPlayerVideo();
+    }
+  });
+};

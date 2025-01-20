@@ -1,11 +1,10 @@
-import { renderModal } from "./renderModal.js";
 import { sliderButtonsHandler } from "./sliderButtonsHandler.js";
 import {
   formatNumbers,
   getMovieIdAndPassToUrl,
   playTrailer,
 } from "./utils/helpers.js";
-import { onYouTubeIframeAPIReady, stopPlayerVideo } from "./youtubePlayer.js";
+
 
 export const renderSlider = (movies) => {
   const movieList = document.querySelector(".slider-movies");
