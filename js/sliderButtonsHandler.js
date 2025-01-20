@@ -28,7 +28,7 @@ export function sliderButtonsHandler(movieList) {
 
   const handleSlideButtons = () => {
     new ResizeObserver(updateMaxScrollLeft).observe(movieList);
-    console.log(maxScrollLeft);
+
     if (movieList.scrollLeft <= 0) {
       slideButtons[0].classList.remove("show");
     } else {
