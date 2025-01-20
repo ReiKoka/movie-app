@@ -1,10 +1,11 @@
 export const renderModal = (trailerUrl) => {
+  
   const modal = `
-    <div class="modal" id="modal">
+    
       <div class="modal-box">
         <div class="modal-content">
           ${
-            trailerUrl
+            trailerUrl 
               ? `<iframe class="frame-player"
                 src="${trailerUrl}"
                 frameborder="0"
@@ -24,7 +25,7 @@ export const renderModal = (trailerUrl) => {
           }
         </div>
       </div>
-    </div>
+  
   `;
   return modal;
 };

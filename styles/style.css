@@ -73,6 +73,45 @@ img {
   justify-content: center;
 }
 
+.modal-content {
+  background-color: hsl(var(--background));
+  width: 50%;
+  min-width: 300px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content:has(.modal-alarm).modal-content {
+  align-items: center;
+  padding: 3rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-content:has(.modal-alarm) .modal-alarm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-content:has(.modal-alarm) .modal-alarm .alarm-logo {
+  width: 10rem;
+  height: 10rem;
+  color: hsl(var(--primary));
+  margin: 0 auto;
+}
+
+.frame-player {
+  width: 100%;
+  height: 100%;
+}
+
 .nav {
   max-width: 1800px;
   display: flex;

@@ -35,8 +35,9 @@ export const renderSingleMovie = (movie) => {
           </svg>
           <span>Watch Trailer</span>
         </button>
-
-        ${renderModal(movie?.trailer?.embed_url)}
+        <div class="modal" id="modal">
+          ${renderModal(movie?.trailer?.embed_url)}
+        </div>
       </div>
 
       <div class="main-details">
